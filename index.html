@@ -47,27 +47,34 @@
     </div>
 
     <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
     <!-- Firebase Configuration and Initialization -->
     <script>
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyA51Q5E-FO0x92q4ZRySyPuY2kGF4LFBQs",
-        authDomain: "jt-pomodoro-with-userlogins.firebaseapp.com",
-        projectId: "jt-pomodoro-with-userlogins",
-        storageBucket: "jt-pomodoro-with-userlogins.firebasestorage.app",
-        messagingSenderId: "986429345281",
-        appId: "1:986429345281:web:91bf52d8fd3acd5a313a00",
-        measurementId: "G-QPGT32MHGG"
-      };
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA51Q5E-FO0x92q4ZRySyPuY2kGF4LFBQs",
+            authDomain: "jt-pomodoro-with-userlogins.firebaseapp.com",
+            projectId: "jt-pomodoro-with-userlogins",
+            storageBucket: "jt-pomodoro-with-userlogins.firebasestorage.app",
+            messagingSenderId: "986429345281",
+            appId: "1:986429345281:web:91bf52d8fd3acd5a313a00",
+            measurementId: "G-QPGT32MHGG"
+        };
 
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      const auth = firebase.auth();
-      const db = firebase.firestore(); // Initialize Firestore
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Add error handling for initialization
+        auth.onAuthStateChanged(function(user) {
+            console.log('Auth state changed:', user ? 'User logged in' : 'No user');
+        }, function(error) {
+            console.error('Auth error:', error);
+        });
     </script>
 
     <script src="script.js"></script>
