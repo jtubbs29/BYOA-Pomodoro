@@ -7,7 +7,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div id="login-screen" class="container">
+        <h1>Private Pomodoro Timer</h1>
+        <div class="login-form">
+            <input type="password" id="passcode" placeholder="Enter passcode" autocomplete="off">
+            <button id="login">Login</button>
+            <p id="login-error" class="error-message"></p>
+        </div>
+    </div>
+
+    <div id="timer-screen" class="container" style="display: none;">
         <h1>Pomodoro Timer</h1>
         <div class="timer">
             <div class="time-display">25:00</div>
@@ -22,6 +31,7 @@
             <button class="mode" data-time="5">Short Break</button>
             <button class="mode" data-time="15">Long Break</button>
         </div>
+        <button id="logout" class="logout-button">Logout</button>
     </div>
     <script src="script.js"></script>
 </body>

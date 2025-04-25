@@ -28,6 +28,28 @@ h1 {
     margin-bottom: 2rem;
 }
 
+/* Login Form Styles */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#passcode {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 0.9rem;
+    min-height: 1.2rem;
+}
+
+/* Timer Styles */
 .timer {
     margin-bottom: 2rem;
 }
@@ -97,4 +119,14 @@ button:hover {
 
 .mode.active:hover {
     background-color: #45a049;
+}
+
+/* Logout Button */
+.logout-button {
+    margin-top: 1rem;
+    background-color: #666;
+}
+
+.logout-button:hover {
+    background-color: #555;
 } 
