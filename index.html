@@ -7,17 +7,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="login-screen" class="container">
-        <h1>Private Pomodoro Timer</h1>
-        <div class="login-form">
-            <input type="password" id="passcode" placeholder="Enter passcode" autocomplete="off">
-            <button id="login">Login</button>
-            <p id="login-error" class="error-message"></p>
+    <div id="auth-container" class="container">
+        <div id="auth-form">
+            <h1>Pomodoro Timer</h1>
+            <p id="auth-mode-message">Login or create an account</p>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email" autocomplete="email">
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Password" autocomplete="current-password">
+            </div>
+            <div class="auth-buttons">
+                <button id="login-btn">Login</button>
+                <button id="register-btn">Register</button>
+            </div>
+            <p id="auth-error" class="error-message"></p>
+            <p><a href="#" id="toggle-mode">Need to register?</a></p>
         </div>
     </div>
 
     <div id="timer-screen" class="container" style="display: none;">
         <h1>Pomodoro Timer</h1>
+        <div id="user-info" style="margin-bottom: 1rem;">Logged in as: <span id="user-email"></span></div>
         <div class="timer">
             <div class="time-display">25:00</div>
             <div class="timer-controls">
@@ -27,12 +38,38 @@
             </div>
         </div>
         <div class="mode-selector">
-            <button class="mode active" data-time="25">Pomodoro</button>
-            <button class="mode" data-time="5">Short Break</button>
-            <button class="mode" data-time="15">Long Break</button>
+            <button class="mode active" data-time="25" data-mode="pomodoro">Pomodoro</button>
+            <button class="mode" data-time="5" data-mode="shortBreak">Short Break</button>
+            <button class="mode" data-time="15" data-mode="longBreak">Long Break</button>
         </div>
+        <!-- TODO: Add section for editing preferences -->
         <button id="logout" class="logout-button">Logout</button>
     </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Configuration and Initialization -->
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyA51Q5E-F0Ox92q4ZRySyPuY2kGF4LFBQs", // Make sure this is correct from your console
+        authDomain: "jt-pomodoro-with-userlogins.firebaseapp.com",
+        projectId: "jt-pomodoro-with-userlogins",
+        storageBucket: "jt-pomodoro-with-userlogins.appspot.com",
+        messagingSenderId: "986429345281",
+        appId: "1:986429345281:web:91bf52d8fd3acd5a313a00",
+        measurementId: "G-QPGT32MHGG" // Optional, but included
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore(); // Initialize Firestore
+    </script>
+
     <script src="script.js"></script>
 </body>
 </html> 

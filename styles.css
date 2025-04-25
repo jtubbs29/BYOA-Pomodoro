@@ -25,31 +25,68 @@ body {
 
 h1 {
     color: #333;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
-/* Login Form Styles */
-.login-form {
+/* Auth Form Styles */
+#auth-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-#passcode {
-    padding: 0.5rem;
+.form-group {
+    margin-bottom: 0.5rem;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
-    text-align: center;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+#auth-mode-message {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+#toggle-mode {
+    color: #0b7dda;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+#toggle-mode:hover {
+    text-decoration: underline;
 }
 
 .error-message {
     color: #f44336;
     font-size: 0.9rem;
     min-height: 1.2rem;
+    margin-top: 0.5rem;
 }
 
-/* Timer Styles */
+/* Timer Screen Styles */
+#timer-screen h1 {
+    margin-bottom: 0.5rem;
+}
+
+#user-info {
+    font-size: 0.9rem;
+    color: #666;
+}
+
 .timer {
     margin-bottom: 2rem;
 }
@@ -81,6 +118,18 @@ button:hover {
     background-color: #45a049;
 }
 
+#login-btn, #register-btn {
+    flex: 1;
+}
+
+#register-btn {
+    background-color: #2196F3;
+}
+
+#register-btn:hover {
+    background-color: #0b7dda;
+}
+
 #pause {
     background-color: #f44336;
 }
@@ -90,17 +139,18 @@ button:hover {
 }
 
 #reset {
-    background-color: #2196F3;
+    background-color: #ff9800;
 }
 
 #reset:hover {
-    background-color: #0b7dda;
+    background-color: #f57c00;
 }
 
 .mode-selector {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    margin-bottom: 1rem;
 }
 
 .mode {
