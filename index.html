@@ -64,17 +64,40 @@
             measurementId: "G-QPGT32MHGG"
         };
 
-        // Initialize Firebase
+        // Initialize Firebase with custom domain auth
         firebase.initializeApp(firebaseConfig);
+        
+        // Configure auth persistence
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+            .then(() => {
+                console.log('Auth persistence set to LOCAL');
+            })
+            .catch((error) => {
+                console.error('Error setting auth persistence:', error);
+            });
+
         const auth = firebase.auth();
         const db = firebase.firestore();
 
-        // Add error handling for initialization
+        // Add comprehensive error handling
         auth.onAuthStateChanged(function(user) {
-            console.log('Auth state changed:', user ? 'User logged in' : 'No user');
+            console.log('Auth state changed:', user ? `User logged in: ${user.email}` : 'No user');
         }, function(error) {
             console.error('Auth error:', error);
         });
+
+        // Configure Firestore settings
+        db.settings({
+            cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED
+        });
+        db.enablePersistence()
+            .catch((err) => {
+                if (err.code == 'failed-precondition') {
+                    console.log('Multiple tabs open, persistence can only be enabled in one tab at a time.');
+                } else if (err.code == 'unimplemented') {
+                    console.log('The current browser does not support persistence.');
+                }
+            });
     </script>
 
     <script src="script.js"></script>
